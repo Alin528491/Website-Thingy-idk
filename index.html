@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alin Kasemtanakul — ISB Class of 2027</title>
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/type.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/grain.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/glass.css">
+  <link rel="stylesheet" href="css/sections.css">
+</head>
+<body>
+
+  <div class="orb" id="orb"></div>
+  <div class="progress" id="progress"></div>
+  <div class="grain" aria-hidden="true"></div>
+  <div class="cur-dot" id="cur-dot"></div>
+  <div class="cur-ring" id="cur-ring"></div>
+
+  <!-- Preloader -->
+  <div class="pre" id="pre">
+    <!-- pulsing bg orbs -->
+    <div class="pre-orb pre-orb--a"></div>
+    <div class="pre-orb pre-orb--b"></div>
+    <div class="pre-orb pre-orb--c"></div>
+
+    <!-- centered name -->
+    <div class="pre-center">
+      <div class="pre-first">
+        <span class="pre-l" style="--i:0">A</span>
+        <span class="pre-l" style="--i:1">L</span>
+        <span class="pre-l" style="--i:2">I</span>
+        <span class="pre-l" style="--i:3">N</span>
+      </div>
+      <div class="pre-last">Kasemtanakul</div>
+      <div class="pre-tag">ISB · Class of 2027</div>
+    </div>
+
+    <!-- bottom bar -->
+    <div class="pre-foot">
+      <span class="pre-status">Loading</span>
+      <span class="pre-num-wrap"><span id="pre-num">00</span><span class="pre-pct">%</span></span>
+    </div>
+
+    <!-- progress line -->
+    <div class="pre-line" id="pre-line"></div>
+
+    <!-- exit curtain strips (slide up on exit) -->
+    <div class="pre-strips" id="pre-strips">
+      <div class="pre-strip"></div>
+      <div class="pre-strip"></div>
+      <div class="pre-strip"></div>
+      <div class="pre-strip"></div>
+      <div class="pre-strip"></div>
+    </div>
+  </div>
+
+  <!-- Nav -->
+  <nav class="nav glass-bar" id="nav">
+    <a href="#" class="nav-logo">Alin K.</a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#activities">Activities</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- Section dot indicator -->
+  <nav class="dot-nav" id="dot-nav" aria-label="Section navigation">
+    <a class="dot-nav-item" href="#hero"       data-label="Intro"></a>
+    <a class="dot-nav-item" href="#about"      data-label="About"></a>
+    <a class="dot-nav-item" href="#activities" data-label="Activities"></a>
+    <a class="dot-nav-item" href="#projects"   data-label="Projects"></a>
+    <a class="dot-nav-item" href="#skills"     data-label="Skills"></a>
+    <a class="dot-nav-item" href="#awards"     data-label="Awards"></a>
+    <a class="dot-nav-item" href="#contact"    data-label="Contact"></a>
+  </nav>
+
+  <main id="main">
+
+    <!-- Hero -->
+    <section class="hero" id="hero">
+      <div class="hero-glow hero-glow--a"></div>
+      <div class="hero-glow hero-glow--b"></div>
+      <div class="hero-inner">
+        <div class="hero-badge glass-pill">
+          <span class="badge-dot"></span>
+          <span>Available for opportunities</span>
+        </div>
+        <h1 class="hero-title">
+          <span class="line"><span class="line-in">Curious.</span></span>
+          <span class="line"><span class="line-in">Creative.</span></span>
+          <span class="line"><span class="line-in">Driven.</span></span>
+        </h1>
+        <div class="hero-sub">
+          <span class="label">Alin Kasemtanakul</span>
+          <span class="hero-desc">International School Bangkok — Class of 2027</span>
+        </div>
+      </div>
+      <div class="hero-scroll">
+        <span class="label">Scroll</span>
+        <div class="scroll-line"></div>
+      </div>
+    </section>
+
+    <!-- Marquee -->
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee-track">
+        <span>Design</span><span class="dot">·</span>
+        <span>Development</span><span class="dot">·</span>
+        <span>Photography</span><span class="dot">·</span>
+        <span>Leadership</span><span class="dot">·</span>
+        <span>Model UN</span><span class="dot">·</span>
+        <span>Swimming</span><span class="dot">·</span>
+        <span>Bangkok</span><span class="dot">·</span>
+        <span>ISB Class of 2027</span><span class="dot">·</span>
+        <span>Research</span><span class="dot">·</span>
+        <span>Robotics</span><span class="dot">·</span>
+        <span>Python</span><span class="dot">·</span>
+        <span>Figma</span><span class="dot">·</span>
+        <!-- duplicate for seamless loop -->
+        <span>Design</span><span class="dot">·</span>
+        <span>Development</span><span class="dot">·</span>
+        <span>Photography</span><span class="dot">·</span>
+        <span>Leadership</span><span class="dot">·</span>
+        <span>Model UN</span><span class="dot">·</span>
+        <span>Swimming</span><span class="dot">·</span>
+        <span>Bangkok</span><span class="dot">·</span>
+        <span>ISB Class of 2027</span><span class="dot">·</span>
+        <span>Research</span><span class="dot">·</span>
+        <span>Robotics</span><span class="dot">·</span>
+        <span>Python</span><span class="dot">·</span>
+        <span>Figma</span><span class="dot">·</span>
+      </div>
+    </div>
+
+    <!-- About -->
+    <section class="about" id="about">
+      <div class="about-inner">
+        <span class="label sect-label">01 — About</span>
+        <h2 class="sect-heading">Who I am.</h2>
+        <div class="about-cols">
+          <div class="about-text">
+            <p>I'm Alin — a student at International School Bangkok with a passion for design, technology, and making things that matter. Whether it's building a website, leading a team, or diving into a research problem, I bring the same energy: curious, thorough, and always looking for a better way.</p>
+            <p>Currently exploring computer science, visual design, and community leadership. Based in Bangkok. Open to conversations, collaborations, and opportunities.</p>
+            <div class="about-stats">
+              <div class="stat">
+                <div class="stat-top"><span class="stat-num" data-target="3">0</span><span class="stat-suf">+</span></div>
+                <span class="stat-lbl">Years Coding</span>
+              </div>
+              <div class="stat">
+                <div class="stat-top"><span class="stat-num" data-target="5">0</span></div>
+                <span class="stat-lbl">Leadership Roles</span>
+              </div>
+              <div class="stat">
+                <div class="stat-top"><span class="stat-num" data-target="8">0</span></div>
+                <span class="stat-lbl">AP Courses</span>
+              </div>
+              <div class="stat">
+                <div class="stat-top"><span class="stat-num" data-target="2027">0</span></div>
+                <span class="stat-lbl">Class Of</span>
+              </div>
+            </div>
+          </div>
+          <div class="about-img">
+            <div class="img-ph"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Activities -->
+    <section class="work" id="activities">
+      <div class="work-inner">
+        <span class="label sect-label">02 — Activities &amp; Leadership</span>
+        <h2 class="sect-heading">Leading with purpose.</h2>
+        <div class="work-list">
+          <a class="work-item" href="#" data-color="#1c1c1c">
+            <span class="wi-num">01</span>
+            <span class="wi-name">Model United Nations</span>
+            <span class="wi-cat tag-coral">Club President</span>
+            <span class="wi-year">2022–</span>
+          </a>
+          <a class="work-item" href="#" data-color="#181818">
+            <span class="wi-num">02</span>
+            <span class="wi-name">Varsity Swimming</span>
+            <span class="wi-cat tag-blue">Team Captain</span>
+            <span class="wi-year">2021–</span>
+          </a>
+          <a class="work-item" href="#" data-color="#141414">
+            <span class="wi-num">03</span>
+            <span class="wi-name">Student Government</span>
+            <span class="wi-cat tag-sage">Secretary</span>
+            <span class="wi-year">2023–</span>
+          </a>
+          <a class="work-item" href="#" data-color="#161616">
+            <span class="wi-num">04</span>
+            <span class="wi-name">Robotics Club</span>
+            <span class="wi-cat tag-coral">Team Lead</span>
+            <span class="wi-year">2022–</span>
+          </a>
+          <a class="work-item" href="#" data-color="#191919">
+            <span class="wi-num">05</span>
+            <span class="wi-name">Community Tutoring</span>
+            <span class="wi-cat tag-blue">Math &amp; Science Tutor</span>
+            <span class="wi-year">2022–</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section class="projects" id="projects">
+      <div class="work-inner">
+        <span class="label sect-label">03 — Projects</span>
+        <h2 class="sect-heading">Things I've built.</h2>
+        <div class="proj-list">
+          <a class="proj-item" href="#">
+            <div class="pi-left">
+              <span class="pi-num">01</span>
+              <div class="pi-info">
+                <span class="pi-name">Portfolio Website</span>
+                <span class="pi-desc">Designed and built a personal portfolio from scratch using vanilla HTML, CSS, and GSAP animations.</span>
+              </div>
+            </div>
+            <div class="pi-right">
+              <span class="pi-tag tag-coral">Web Design</span>
+              <span class="pi-year">2025</span>
+            </div>
+          </a>
+          <a class="proj-item" href="#">
+            <div class="pi-left">
+              <span class="pi-num">02</span>
+              <div class="pi-info">
+                <span class="pi-name">Climate Data Visualization</span>
+                <span class="pi-desc">AP Environmental Science research project — visualized 50 years of local climate data using Python and D3.js.</span>
+              </div>
+            </div>
+            <div class="pi-right">
+              <span class="pi-tag tag-sage">Research</span>
+              <span class="pi-year">2024</span>
+            </div>
+          </a>
+          <a class="proj-item" href="#">
+            <div class="pi-left">
+              <span class="pi-num">03</span>
+              <div class="pi-info">
+                <span class="pi-name">MUN Resolution Archive</span>
+                <span class="pi-desc">Built a searchable digital archive for our school's Model UN club — 200+ resolutions, used by 80+ members.</span>
+              </div>
+            </div>
+            <div class="pi-right">
+              <span class="pi-tag tag-blue">Development</span>
+              <span class="pi-year">2024</span>
+            </div>
+          </a>
+          <a class="proj-item" href="#">
+            <div class="pi-left">
+              <span class="pi-num">04</span>
+              <div class="pi-info">
+                <span class="pi-name">Photography Exhibition</span>
+                <span class="pi-desc">Curated and displayed a 20-piece series on urban infrastructure for the school's annual art show.</span>
+              </div>
+            </div>
+            <div class="pi-right">
+              <span class="pi-tag tag-coral">Art &amp; Design</span>
+              <span class="pi-year">2023</span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills -->
+    <section class="skills" id="skills">
+      <div class="skills-inner">
+        <span class="label sect-label">04 — Skills &amp; Interests</span>
+        <h2 class="sect-heading">What I know.</h2>
+        <div class="skills-list">
+          <div class="skill-row glass sk-coral glass-pill-track">
+            <span class="sk-icon">01</span>
+            <span class="sk-name">Computer Science</span>
+            <span class="sk-detail">Python · JavaScript · HTML/CSS</span>
+          </div>
+          <div class="skill-row glass sk-blue glass-pill-track">
+            <span class="sk-icon">02</span>
+            <span class="sk-name">Design</span>
+            <span class="sk-detail">Figma · Photography · Typography</span>
+          </div>
+          <div class="skill-row glass sk-sage glass-pill-track">
+            <span class="sk-icon">03</span>
+            <span class="sk-name">Research &amp; Writing</span>
+            <span class="sk-detail">AP English · Policy Writing</span>
+          </div>
+          <div class="skill-row glass sk-yellow glass-pill-track">
+            <span class="sk-icon">04</span>
+            <span class="sk-name">Leadership</span>
+            <span class="sk-detail">Public Speaking · Team Building</span>
+          </div>
+          <div class="skill-row glass sk-violet glass-pill-track">
+            <span class="sk-icon">05</span>
+            <span class="sk-name">Languages</span>
+            <span class="sk-detail">English · Thai · French</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Awards -->
+    <section class="awards" id="awards">
+      <div class="awards-inner">
+        <span class="label sect-label">05 — Awards &amp; Recognition</span>
+        <h2 class="sect-heading">Earned, not given.</h2>
+        <div class="awards-list">
+          <div class="award-row glass glass-pill-track">
+            <span class="aw-year">2025</span>
+            <span class="aw-name">National Merit Scholarship Semifinalist</span>
+            <span class="aw-org">National Merit Scholarship Corp.</span>
+          </div>
+          <div class="award-row glass glass-pill-track">
+            <span class="aw-year">2024</span>
+            <span class="aw-name">Best Delegate — NYMUN Conference</span>
+            <span class="aw-org">New York Model UN</span>
+          </div>
+          <div class="award-row glass glass-pill-track">
+            <span class="aw-year">2024</span>
+            <span class="aw-name">1st Place — Regional Science Fair</span>
+            <span class="aw-org">Environmental Sciences</span>
+          </div>
+          <div class="award-row glass glass-pill-track">
+            <span class="aw-year">2023</span>
+            <span class="aw-name">AP Scholar with Distinction</span>
+            <span class="aw-org">College Board</span>
+          </div>
+          <div class="award-row glass glass-pill-track">
+            <span class="aw-year">2023</span>
+            <span class="aw-name">State Championship — 200m Freestyle</span>
+            <span class="aw-org">State Athletic Association</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="contact" id="contact">
+      <div class="contact-inner">
+        <span class="label sect-label">06 — Contact</span>
+        <a href="mailto:alin@alinalin.net" class="contact-cta">
+          <span class="cta-line"><span class="cta-in">Let's</span></span>
+          <span class="cta-line"><span class="cta-in">connect.</span></span>
+        </a>
+        <div class="contact-bottom glass-bar">
+          <div class="contact-info">
+            <a href="mailto:alin@alinalin.net" class="contact-email">alin@alinalin.net</a>
+            <a href="tel:+88820776202" class="contact-phone">+88 820 776 202</a>
+          </div>
+          <div class="contact-social">
+            <a href="#">LinkedIn</a>
+            <a href="#">GitHub</a>
+            <a href="#">Instagram</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,326 @@
+/* --- Section dot indicator --- */
+.dot-nav {
+  position: fixed;
+  right: clamp(16px, 2vw, 28px);
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 200;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  pointer-events: all;
+}
+
+.dot-nav-item {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.2);
+  display: block;
+  position: relative;
+  transition: background 0.3s, transform 0.3s;
+}
+
+.dot-nav-item::after {
+  content: attr(data-label);
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--fg);
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s;
+}
+
+.dot-nav-item:hover { transform: scale(1.8); background: var(--fg); }
+.dot-nav-item:hover::after { opacity: 0.6; }
+
+.dot-nav-item[data-active] {
+  background: var(--acc);
+  transform: scale(1.4);
+  box-shadow: 0 0 8px var(--acc);
+}
+
+@media (max-width: 768px) { .dot-nav { display: none; } }
+
+/* --- Global cursor orb (ambient light that follows mouse) --- */
+.orb {
+  position: fixed;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+  top: 0; left: 0;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(circle, rgba(255,107,61,0.06) 0%, transparent 65%);
+  filter: blur(40px);
+  will-change: transform;
+  transition: background 1.2s ease;
+}
+
+/* --- Progress bar --- */
+.progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 2px;
+  width: 0%;
+  background: linear-gradient(90deg, var(--a1), var(--a2));
+  z-index: 9000;
+  transform-origin: left;
+  pointer-events: none;
+  box-shadow: 0 0 8px rgba(232,132,92,0.5);
+}
+
+/* --- Cursor --- */
+.cur-dot,
+.cur-ring {
+  position: fixed;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 10000;
+  top: 0;
+  left: 0;
+  transform: translate(-50%, -50%);
+  will-change: transform;
+}
+
+.cur-dot {
+  width: 8px;
+  height: 8px;
+  background: #fff;
+  mix-blend-mode: difference;
+  transition: width 0.2s, height 0.2s;
+}
+
+body.hov .cur-dot {
+  width: 14px;
+  height: 14px;
+}
+
+.cur-ring {
+  width: 36px;
+  height: 36px;
+  background: rgba(255,255,255,0.9);
+  mix-blend-mode: difference;
+  transition: width 0.35s ease, height 0.35s ease, opacity 0.2s;
+  opacity: 0.15;
+}
+
+body.hov .cur-ring {
+  width: 56px;
+  height: 56px;
+  opacity: 0.25;
+}
+
+/* --- Preloader --- */
+.pre {
+  position: fixed;
+  inset: 0;
+  background: var(--bg);
+  z-index: 10001;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* pulsing ambient orbs */
+.pre-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  pointer-events: none;
+  animation: pre-pulse 3s ease-in-out infinite alternate;
+}
+.pre-orb--a {
+  width: 500px; height: 500px;
+  background: radial-gradient(circle, rgba(255,107,61,0.18) 0%, transparent 70%);
+  top: -120px; left: -100px;
+  animation-delay: 0s;
+}
+.pre-orb--b {
+  width: 400px; height: 400px;
+  background: radial-gradient(circle, rgba(91,141,247,0.16) 0%, transparent 70%);
+  bottom: -100px; right: -80px;
+  animation-delay: 1s;
+}
+.pre-orb--c {
+  width: 350px; height: 350px;
+  background: radial-gradient(circle, rgba(62,207,142,0.12) 0%, transparent 70%);
+  top: 40%; left: 50%;
+  transform: translate(-50%, -50%);
+  animation-delay: 2s;
+}
+@keyframes pre-pulse {
+  0%   { opacity: 0.5; transform: scale(1) translate(0,0); }
+  100% { opacity: 1;   transform: scale(1.15) translate(2%, 2%); }
+}
+.pre-orb--c { animation-name: pre-pulse-c; }
+@keyframes pre-pulse-c {
+  0%   { opacity: 0.4; transform: translate(-50%,-50%) scale(0.9); }
+  100% { opacity: 0.8; transform: translate(-50%,-50%) scale(1.1); }
+}
+
+/* center block */
+.pre-center {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+/* letter-by-letter first name */
+.pre-first {
+  display: flex;
+  gap: 0.02em;
+}
+.pre-l {
+  display: inline-block;
+  font-size: clamp(72px, 14vw, 200px);
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  line-height: 0.9;
+  color: var(--fg);
+}
+
+/* last name */
+.pre-last {
+  font-size: clamp(16px, 2.5vw, 32px);
+  font-weight: 300;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--fg);
+}
+
+/* tag line */
+.pre-tag {
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--dim);
+}
+
+/* bottom foot */
+.pre-foot {
+  position: absolute;
+  bottom: clamp(28px, 5vw, 56px);
+  left: clamp(28px, 5vw, 72px);
+  right: clamp(28px, 5vw, 72px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 2;
+}
+.pre-status {
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--dim);
+}
+.pre-num-wrap {
+  font-size: clamp(13px, 2vw, 18px);
+  font-weight: 300;
+  letter-spacing: 0.08em;
+  color: var(--fg);
+  opacity: 0.7;
+}
+.pre-pct {
+  font-size: 0.7em;
+  opacity: 0.5;
+  margin-left: 1px;
+}
+
+/* progress line */
+.pre-line {
+  position: absolute;
+  bottom: clamp(52px, 8vw, 90px);
+  left: clamp(28px, 5vw, 72px);
+  right: clamp(28px, 5vw, 72px);
+  height: 1px;
+  background: var(--line);
+  z-index: 2;
+  overflow: hidden;
+}
+/* fill div injected by JS */
+
+/* exit strips — initially hidden, JS sets display:block on each */
+.pre-strips {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  z-index: 3;
+  pointer-events: none;
+}
+.pre-strip {
+  flex: 1;
+  height: 100%;
+  background: var(--bg);
+}
+
+/* --- Nav --- */
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: clamp(16px, 2.5vw, 28px) var(--pad);
+}
+
+.nav-logo {
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: var(--fg);
+}
+
+.nav-links {
+  display: flex;
+  gap: clamp(24px, 4vw, 52px);
+}
+
+.nav-links a {
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--fg);
+  opacity: 0.5;
+  transition: opacity 0.2s;
+}
+
+.nav-links a:hover,
+.nav-links a[data-active] {
+  opacity: 1;
+}
+
+.nav-links a[data-active]::after {
+  content: '';
+  display: block;
+  height: 1px;
+  background: var(--acc);
+  margin-top: 2px;
+  transform-origin: left;
+  animation: nav-underline 0.3s ease forwards;
+}
+
+@keyframes nav-underline {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
+}

@@ -1,0 +1,142 @@
+/*
+  Liquid Glass — clear, not tinted
+  backdrop-filter does the heavy lifting; bg is near-transparent
+*/
+
+/* ── Nav bar ──────────────────────────────────────────── */
+.glass-bar {
+  background: rgba(255, 255, 255, 0.03);   /* clear */
+  backdrop-filter: blur(28px) saturate(200%) brightness(105%);
+  -webkit-backdrop-filter: blur(28px) saturate(200%) brightness(105%);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.09);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.14),
+    0 4px 32px rgba(0, 0, 0, 0.35);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Cursor-reactive specular */
+.glass-bar::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(
+    circle at var(--mx, 50%) 50%,
+    rgba(255,255,255,0.07) 0%, transparent 55%
+  );
+  pointer-events: none;
+}
+
+/* ── Base glass (skill rows, award rows) ─────────────── */
+.glass {
+  position: relative;
+  background: rgba(255, 255, 255, 0.012);   /* very clear */
+  backdrop-filter: blur(18px) saturate(180%) brightness(104%);
+  -webkit-backdrop-filter: blur(18px) saturate(180%) brightness(104%);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.16),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.1),
+    0 4px 20px rgba(0, 0, 0, 0.25),
+    0 1px 4px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+}
+
+/* Face gradient (light refraction simulation) */
+.glass::before {
+  content: '';
+  position: absolute; inset: 0; border-radius: inherit;
+  background: linear-gradient(
+    135deg,
+    rgba(255,255,255,0.1)  0%,
+    rgba(255,255,255,0.02) 40%,
+    rgba(255,255,255,0.0)  60%,
+    rgba(255,255,255,0.04) 100%
+  );
+  pointer-events: none; z-index: 0;
+}
+
+/* Specular top rim */
+.glass::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 10%; right: 10%; height: 1px;
+  background: linear-gradient(
+    90deg, transparent,
+    rgba(255,255,255,0.5) 30%,
+    rgba(255,255,255,0.7) 50%,
+    rgba(255,255,255,0.5) 70%,
+    transparent
+  );
+  pointer-events: none; z-index: 1;
+}
+
+.glass > * { position: relative; z-index: 2; }
+
+/* ── Pill / badge ─────────────────────────────────────── */
+.glass-pill {
+  position: relative;
+  background: rgba(255, 255, 255, 0.015);   /* very clear */
+  backdrop-filter: blur(16px) saturate(220%) brightness(112%);
+  -webkit-backdrop-filter: blur(16px) saturate(220%) brightness(112%);
+  border-radius: 100px;
+  /* animated gradient border */
+  border: 1px solid transparent;
+  background-clip: padding-box;
+  outline: 1px solid transparent;
+  box-shadow:
+    inset 0 1.5px 0 rgba(255,255,255,0.28),
+    inset 0 -1px 0 rgba(0,0,0,0.12),
+    0 6px 24px rgba(0,0,0,0.28),
+    0 1px 4px rgba(0,0,0,0.18);
+  overflow: hidden;
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+.glass-pill::before {
+  content: '';
+  position: absolute; inset: 0; border-radius: inherit;
+  background: linear-gradient(145deg, rgba(255,255,255,0.18) 0%, rgba(255,255,255,0.02) 50%, rgba(255,255,255,0.0) 60%);
+  pointer-events: none; z-index: 0;
+}
+
+/* cursor-reactive specular */
+.glass-pill::after {
+  content: '';
+  position: absolute; inset: 0; border-radius: inherit;
+  background: radial-gradient(
+    circle at var(--mx,50%) var(--my,30%),
+    rgba(255,255,255,0.28) 0%,
+    rgba(255,255,255,0.06) 35%,
+    transparent 60%
+  );
+  pointer-events: none; z-index: 1;
+}
+
+.glass-pill > * { position: relative; z-index: 2; }
+
+/* Animated color glow around the hero badge */
+.hero-badge.glass-pill {
+  animation: badge-glow 4s ease-in-out infinite alternate;
+}
+
+@keyframes badge-glow {
+  0%   { box-shadow: inset 0 1.5px 0 rgba(255,255,255,0.28), 0 6px 24px rgba(0,0,0,0.28), 0 0 18px rgba(62,207,142,0.35); }
+  33%  { box-shadow: inset 0 1.5px 0 rgba(255,255,255,0.28), 0 6px 24px rgba(0,0,0,0.28), 0 0 18px rgba(91,141,247,0.35); }
+  66%  { box-shadow: inset 0 1.5px 0 rgba(255,255,255,0.28), 0 6px 24px rgba(0,0,0,0.28), 0 0 18px rgba(255,107,61,0.3); }
+  100% { box-shadow: inset 0 1.5px 0 rgba(255,255,255,0.28), 0 6px 24px rgba(0,0,0,0.28), 0 0 18px rgba(181,110,247,0.35); }
+}
+
+/* ── glass-pill-track: cursor specular on any glass el ── */
+/* (skill rows & award rows use this class) */
+.glass-pill-track::after {
+  content: '';
+  position: absolute; inset: 0; border-radius: inherit;
+  background: radial-gradient(
+    circle at var(--mx,50%) var(--my,50%),
+    rgba(255,255,255,0.1) 0%,
+    transparent 55%
+  );
+  pointer-events: none; z-index: 3;
+}
